@@ -33,52 +33,7 @@
   Info about Snapshot.js https://docs.snapshot.org/snapshot.js
   -->
   <script src="https://cdn.jsdelivr.net/npm/@snapshot-labs/snapshot.js"></script>
-  <script type="application/javascript">
-
-    const graphQlApi = 'https://hub.snapshot.org/graphql';
-
-    var query = `query Space {
-                  space(
-                    id: "sovvault.eth"
-                  ) {
-                    id
-                    name
-                    about
-                    network
-                    symbol
-                    strategies {
-                      name
-                      params
-                    }
-                    admins
-                    members
-                    filters {
-                      minScore
-                      onlyMembers
-                    }
-                    plugins
-                  }
-                }`;
-
-    fetch(graphQlApi, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        query
-      }),
-    })
-    .then((r) => r.json())
-    .then((data) => {
-      elem = document.querySelector('#graphql-query'); 
-      console.log(data);
-      elem.innerText = JSON.stringify(data); }
-      );
-
-  </script>
-
+  <script src="site.js"></script>
 </head>
 <body>
 
@@ -87,40 +42,41 @@
   <div class="container">
     <div class="row">
       <div class="one-half column" style="margin-top: 25%">
-        <h4>Voting Page</h4>
-        <p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some content! If you need some help hit up the <a href="http://www.getskeleton.com">Skeleton documentation</a>.</p>
+        <h1>Super Ordinary Voting Page</h4>
+        <a href="#" class="button">Vote</a>
       </div>
     </div>
     <div class="row">
-        <div class="one-third column">
+        <div id="council" class="one-third column">
           <h2>The Council</h2>
-          <p>40/20 votes</a>.</p>
-          <div class="w3-border">
-            <div class="w3-grey" style="height:24px;width:20%;background-color: gray;color:whitesmoke">20%</div>
+          <div class="proposal">
+            <div class="w3-border">
+              <div class="w3-grey" style="height:24px;width:20%;background-color: gray;color:whitesmoke">20%</div>
+            </div>
+            <h3 id="proposal-name"></h3>
+            <h4 id="proposal-votes"></h4>
           </div>
         </div>
-        <div class="one-third column">
-            <h2>CAPES</h2>
-            <p>40/250 votes</a>.</p>
+        <div id="capes" class="one-third column">
+          <h2>CAPES</h2>
+          <div class="proposal">
             <div class="w3-border">
-                <div class="w3-grey" style="height:24px;width:20%;background-color: gray;color:whitesmoke">20%</div>
-              </div>
+              <div class="w3-grey" style="height:24px;width:20%;background-color: gray;color:whitesmoke">20%</div>
+            </div>
+            <h3 id="proposal-name"></h3>
+            <h4 id="proposal-votes"></h4>
           </div>
-          <div class="one-third column">
-            <h2>Supers</h2>
-            <p>40/8888 votes</a>.</p>
+        </div>
+        <div id="supers" class="one-third column">
+          <h2>Supers</h2>
+          <div class="proposal">
             <div class="w3-border">
-                <div class="w3-grey" style="height:24px;width:20%;background-color: gray;color:whitesmoke">20%</div>
-              </div>
+              <div class="w3-grey" style="height:24px;width:20%;background-color: gray;color:whitesmoke">20%</div>
+            </div>
+            <h3 id="proposal-name"></h3>
+            <h4 id="proposal-votes"></h4>
           </div>
-          <br/>
-          <br/>
-          <br/>
-          <div class="column">
-            <h4>GraphQL Query</h2>
-            <p id="graphql-query"></p>
-
-          </div>
+        </div>
       </div>
   </div>
 
